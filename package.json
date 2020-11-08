@@ -1,8 +1,7 @@
 {
   "author": {
-    "email": "this.eduardo@gmail.com",
-    "name": "Eduardo Gómez",
-    "url": "https://eduardogomez.io"
+    "name": "Mike Kowalski",
+    "url": "https://mikemybytes.com"
   },
   "config": {
     "posts_per_page": 10,
@@ -27,8 +26,8 @@
       }
     }
   },
-  "demo": "https://liebling.eduardogomez.io",
-  "description": "Beautiful and clean theme that is easy and comfortable to use.",
+  "demo": "https://mikemybytes.com",
+  "description": "Custom Ghost blog theme based on liebling.",
   "engines": {
     "ghost": ">=3.0.0",
     "ghost-api": "v3"
@@ -49,7 +48,7 @@
     "ghost-theme"
   ],
   "license": "MIT",
-  "name": "liebling",
+  "name": "mikemybytes-ghost-blog-theme",
   "screenshots": {
     "desktop": "assets/screenshot-desktop.jpg",
     "mobile": "assets/screenshot-mobile.jpg"
