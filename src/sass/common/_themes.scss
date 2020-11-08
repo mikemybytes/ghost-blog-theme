@@ -3,16 +3,16 @@
   --background-color: #fff;
   --primary-foreground-color: #4a4a4a;
   --secondary-foreground-color: #000;
-  --primary-subtle-color: #0470ee;
+  --primary-subtle-color: #5d79b2; // $mikemybytes_blue; // was: #0470ee;
   --secondary-subtle-color: #f4f8fd;
   --titles-color: #333;
-  --link-color: #133467;
+  --link-color: #5d79b2; // $mikemybytes_blue; // was: #133467;
   --primary-border-color: #9b9b9b;
   --secondary-border-color: aliceblue;
   --article-shadow-normal: 0 10px 10px rgba(0,0,0,0.08);
   --article-shadow-hover: 0 4px 60px 0 rgba(0,0,0,0.2);
   --transparent-background-color: rgba(255,255,255,0.99);
-  --footer-background-color: #133467;
+  --footer-background-color: #5d79b2; // $mikemybytes_blue; // was: #133467;
   --submenu-shadow-color-opacity: 0.25;
   --button-shadow-color-normal: rgba(108, 108, 108, 0.2);
   --button-shadow-color-hover: rgba(108, 108, 108, 0.3);
@@ -23,16 +23,27 @@
   --toggle-darkmode-background-color: rgba(0, 0, 0, 0.05);
   --header-menu-gradient-first-color: rgba(255, 255, 255, 0);
   --header-menu-gradient-secound-color: rgba(255, 255, 255, 1);
+
+  // custom variables (not present in liebling)
+  --header-border-bottom: none;
+  --footer-border-top: none;
+
+  .site_logo_light {
+    display: inline;
+  }
+  .site_logo_dark {
+    display: none;
+  }
 }
 
 [data-theme="dark"] {
   --background-color: #111;
   --primary-foreground-color: #ccc;
   --secondary-foreground-color: #fff;
-  --primary-subtle-color: #2c2fe6;
+  --primary-subtle-color: #ab559d; // $mikemybytes_purple; // #was: 2c2fe6;
   --secondary-subtle-color: #141920;
   --titles-color: #b4b4b4;
-  --link-color: #b6b7f6;
+  --link-color: #5d79b2; // $mikemybytes_blue; // was: #b6b7f6;
   --primary-border-color: #1d1d1d;
   --secondary-border-color: #0f0f0f;
   --article-shadow-normal: 0 4px 5px 5px rgba(0,0,0,0.1);
@@ -49,6 +60,17 @@
   --toggle-darkmode-background-color: rgba(0, 0, 0, 0.5);
   --header-menu-gradient-first-color: rgba(17, 17, 17, 0);
   --header-menu-gradient-secound-color: rgba(17, 17, 17, 0.65);
+
+  // custom variables (not present in liebling)
+  --header-border-bottom: 2px solid #ab559d; // $mikemybytes_purple;
+  --footer-border-top: 2px solid #5d79b2;
+
+  .site_logo_light {
+    display: none;
+  }
+  .site_logo_dark {
+    display: inline;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -76,5 +98,16 @@
     --toggle-darkmode-background-color: rgba(0, 0, 0, 0.5);
     --header-menu-gradient-first-color: rgba(17, 17, 17, 0);
     --header-menu-gradient-secound-color: rgba(17, 17, 17, 0.65);
+
+    // custom variables (not present in liebling)
+    --header-border-bottom: 2px solid #ab559d; // $mikemybytes_purple;
+    --footer-border-top: 2px solid #5d79b2;;
+
+    .site_logo_light {
+      display: none;
+    }
+    .site_logo_dark {
+      display: inline;
+    }
   }
 }
