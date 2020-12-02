@@ -11,6 +11,28 @@ This template is used for the post page.
 {{!-- This block loads specific styles for the post page --}}
 {{#contentFor "styles"}}
   <link rel="stylesheet" type="text/css" href="{{asset "css/post.css"}}" media="screen" />
+
+  {{!-- #mikemybytes custom --}}
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism-okaidia.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  {{!-- Override some prism.js styles --}}
+  <style>
+      pre[class*="language-"] {
+          margin: 0 0 1.5em !important;
+      }
+      code {
+          text-shadow: none !important;
+      }
+      .token.operator {
+          background: none !important;
+      }
+      :not(pre) > code[class*="language-"],
+      pre[class*="language-"] {
+          background: #20262E !important;
+      }
+  </style>
+  {{!-- #mikemybytes custom --}}
 {{/contentFor}}
 
 {{!-- The tag below means: insert everything in this file
@@ -233,4 +255,9 @@ into the {body} of the default.hbs template --}}
 {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
 {{#contentFor "scripts"}}
   <script defer src="{{asset "js/post.js"}}"></script>
+
+  {{!-- #mikemybytes custom --}}
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/prism.min.js" integrity="sha512-9+422Bs3A87UkWfp+qV80Nfv9arhbCXKY1rxrF2seorI36mIIstMiuBfyKLF1yH1nnzQkEWq2xrzT4XU3Z+vrA==" crossorigin="anonymous"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-Q3qGP1uJL/B0sEmu57PKXjCirgPKMbg73OLRbTJ6lfHCVU5zkHqmcTI5EV2fSoPV1MHdKsCBE7m/aS6q0pPjRQ==" crossorigin="anonymous"></script>
+  {{!-- #mikemybytes custom --}}
 {{/contentFor}}
