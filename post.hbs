@@ -215,11 +215,15 @@ into the {body} of the default.hbs template --}}
 
                 {{!-- https://jross.me/lazy-loading-disqus-comments-with-intersectionobserver/ --}}
 
+                let disqusLoaded = false;
                 let loadComments = () => {
-                    let d = document, s = d.createElement('script');
-                    s.src = 'https://blog-michal-kowalski.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
+                    if (!disqusLoaded) {
+                        disqusLoaded = true;
+                        let d = document, s = d.createElement('script');
+                        s.src = 'https://blog-michal-kowalski.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    }
                 }
 
                 const commentsButton = document.getElementById('load_comments_btn');
