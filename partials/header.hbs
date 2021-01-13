@@ -10,8 +10,8 @@ This header template is shared across all the pages.
     {{#if @site.logo}}
       <a href="{{@site.url}}" class="m-logo in-mobile-topbar">
          {{!-- Use light/dark variants instead of {{@site.logo}} --}}
-          <img src="{{asset "images/site_logo_light.png"}}" alt="{{@site.title}}" class="site_logo_light">
-          <img src="{{asset "images/site_logo_dark.png"}}" alt="{{@site.title}}" class="site_logo_dark">
+          <img src="{{asset "images/site_logo_light.png"}}" alt="{{@site.title}}" class="site_logo_light" loading="lazy">
+          <img src="{{asset "images/site_logo_dark.png"}}" alt="{{@site.title}}" class="site_logo_dark" loading="lazy">
       </a>
     {{else}}
       <a href="{{@site.url}}" class="m-site-name in-mobile-topbar">
@@ -36,8 +36,8 @@ This header template is shared across all the pages.
                 <li class="only-desktop">
                   <a href="{{@site.url}}" class="m-logo">
                     {{!-- Use light/dark variants instead of {{@site.logo}} --}}
-                    <img src="{{asset "images/site_logo_light.png"}}" alt="{{@site.title}}" class="site_logo_light">
-                    <img src="{{asset "images/site_logo_dark.png"}}" alt="{{@site.title}}" class="site_logo_dark">
+                    <img src="{{asset "images/site_logo_light.png"}}" alt="{{@site.title}}" class="site_logo_light" loading="lazy">
+                    <img src="{{asset "images/site_logo_dark.png"}}" alt="{{@site.title}}" class="site_logo_dark" loading="lazy">
                   </a>
                 </li>
                 {{else}}

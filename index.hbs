@@ -29,8 +29,8 @@ into the {body} of the default.hbs template --}}
   <div class="m-hero__content" data-aos="fade-down">
   {{#if @site.logo}}
       <div class="m-hero-title">
-        <img src="{{asset "images/site_logo_light.png"}}" alt="{{@site.title}}" class="site_logo_light">
-        <img src="{{asset "images/site_logo_dark.png"}}" alt="{{@site.title}}" class="site_logo_dark">
+        <img src="{{asset "images/site_logo_light.png"}}" alt="{{@site.title}}" class="site_logo_light" loading="lazy">
+        <img src="{{asset "images/site_logo_dark.png"}}" alt="{{@site.title}}" class="site_logo_dark" loading="lazy">
       </div>
   {{else}}
       <h1 class="m-hero-title bigger">{{@site.title}}</h1>
