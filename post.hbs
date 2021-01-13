@@ -201,7 +201,7 @@ into the {body} of the default.hbs template --}}
           <section class="m-comments">
             <div class="m-load-comments">
               <div class="m-load-comments__line"></div>
-              <button class="m-icon-button filled as-load-comments js-tooltip js-load-comments" data-tippy-content="Load comments">
+              <button id="load_comments_btn" class="m-icon-button filled as-load-comments js-tooltip js-load-comments" data-tippy-content="Load comments">
                 <span class="icon-comments"></span>
               </button>
             </div>
@@ -212,12 +212,52 @@ into the {body} of the default.hbs template --}}
                   this.page.url = "{{url absolute="true"}}";
                   this.page.identifier = "ghost-{{comment_id}}"
                 };
-                (function () {
-                  var d = document, s = d.createElement('script');
-                  s.src = 'https://blog-michal-kowalski.disqus.com/embed.js';
-                  s.setAttribute('data-timestamp', +new Date());
-                  (d.head || d.body).appendChild(s);
-                })();
+
+                {{!-- https://jross.me/lazy-loading-disqus-comments-with-intersectionobserver/ --}}
+
+                let loadComments = () => {
+                    let d = document, s = d.createElement('script');
+                    s.src = 'https://blog-michal-kowalski.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                }
+
+                const commentsButton = document.getElementById('load_comments_btn');
+                // add click handler to comments button to load comments, and emit event to GA
+                if(commentsButton){
+                    commentsButton.addEventListener('click', function(){
+                        if(ga && typeof(ga) === 'function'){
+                            ga('send', 'event', {
+                                eventCategory: 'Load Comments',
+                                eventAction: 'click',
+                                eventLabel: disqus_config.page.identifier
+                            });
+                        };
+                        loadComments();
+                    });
+                }
+
+                // load comments for search engines to index
+                if(/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)){
+                    loadComments();
+                }
+                // load comments if URL hash contains #comment
+                if(location && location.hash && location.hash.includes('comment')){
+                    loadComments();
+                }
+
+                // load comments when comments enter viewport
+                if(!!window.IntersectionObserver){
+                    const commentBox = document.querySelector('.m-load-comments');
+
+                    const intersectionObserver = new IntersectionObserver(function(entries, observer){
+                        if(entries && entries[0] && entries[0].isIntersecting){
+                            loadComments();
+                            observer.unobserve(commentBox);
+                        }
+                    });
+                    intersectionObserver.observe(commentBox);
+                }
               </script>
             </div>
           </section>
