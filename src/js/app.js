@@ -65,7 +65,10 @@ $(document).ready(() => {
 
   const trySearchFeature = () => {
     if (typeof ghostSearchApiKey !== 'undefined') {
-      getAllPosts(ghostHost, ghostSearchApiKey)
+      // #mikemybytes custom
+      // disable unused search feature to get rid of Content API dependency
+      // getAllPosts(ghostHost, ghostSearchApiKey)
+      // #mikemybytes custom
     } else {
       $openSearch.css('visibility', 'hidden')
       $closeSearch.remove()
@@ -73,6 +76,9 @@ $(document).ready(() => {
     }
   }
 
+  // #mikemybytes custom
+  // disable unused search feature to get rid of Content API dependency
+  /*
   const getAllPosts = (host, key) => {
     const api = new GhostContentAPI({
       url: host,
@@ -105,6 +111,8 @@ $(document).ready(() => {
         console.log(err)
       })
   }
+  */
+  // #mikemybytes custom
 
   const showNotification = (typeNotification) => {
     const $notification = $(`.js-alert[data-notification="${typeNotification}"]`)
