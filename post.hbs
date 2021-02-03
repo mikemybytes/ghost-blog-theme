@@ -199,65 +199,14 @@ into the {body} of the default.hbs template --}}
         </section>
         {{!-- If you want to embed comments, this is a good place to do it! --}}
           <section class="m-comments">
-            {{!-- TODO: fix lazy comments loading --}}
-            <div class="m-load-comments__iframe l-wrapper in-comments js-comments-iframe">
+            <div class="l-wrapper in-comments">
               <div id="disqus_thread"></div>
               <script>
                 var disqus_config = function () {
                   this.page.url = "{{url absolute="true"}}";
                   this.page.identifier = "ghost-{{comment_id}}"
                 };
-
-                {{!-- https://jross.me/lazy-loading-disqus-comments-with-intersectionobserver/ --}}
-
-                let disqusLoaded = false;
-                let loadComments = () => {
-                    if (!disqusLoaded) {
-                        disqusLoaded = true;
-                        let d = document, s = d.createElement('script');
-                        s.src = 'https://blog-michal-kowalski.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                    }
-                }
-
-                const commentsButton = document.getElementById('load_comments_btn');
-                // add click handler to comments button to load comments, and emit event to GA
-                if(commentsButton){
-                    commentsButton.addEventListener('click', function(){
-                        if(ga && typeof(ga) === 'function'){
-                            ga('send', 'event', {
-                                eventCategory: 'Load Comments',
-                                eventAction: 'click',
-                                eventLabel: disqus_config.page.identifier
-                            });
-                        };
-                        loadComments();
-                    });
-                }
-
-                // load comments for search engines to index
-                if(/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)){
-                    loadComments();
-                }
-                // load comments if URL hash contains #comment
-                if(location && location.hash && location.hash.includes('comment')){
-                    loadComments();
-                }
-
-                // load comments when comments enter viewport
-                if(!!window.IntersectionObserver){
-                    const commentBox = document.querySelector('.m-load-comments');
-
-                    const intersectionObserver = new IntersectionObserver(function(entries, observer){
-                        if(entries && entries[0] && entries[0].isIntersecting){
-                            loadComments();
-                            observer.unobserve(commentBox);
-                        }
-                    });
-                    intersectionObserver.observe(commentBox);
-                }
-              </script>
+                </script>
             </div>
           </section>
       {{/post}}

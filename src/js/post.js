@@ -192,3 +192,42 @@ $(document).ready(() => {
 $(window).on('load', () => {
   prepareProgressCircle()
 })
+
+// #mikemybytes custom
+$(window).on('load', () => {
+  // load Disqus comments lazily
+  // https://jross.me/lazy-loading-disqus-comments-with-intersectionobserver/
+
+  let disqusLoaded = false;
+  let loadComments = () => {
+    if (!disqusLoaded) {
+      disqusLoaded = true;
+      let d = document, s = d.createElement('script');
+      s.src = 'https://blog-michal-kowalski.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+
+  // load comments for search engines to index
+  if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+    loadComments();
+  }
+  // load comments if URL hash contains #comment
+  if (location && location.hash && location.hash.includes('comment')) {
+    loadComments();
+  }
+
+  // load comments when author data enter viewport
+  if (!!window.IntersectionObserver) {
+    const box = document.querySelector('.m-author__content');
+    const intersectionObserver = new IntersectionObserver(function (entries, observer) {
+      if (entries && entries[0] && entries[0].isIntersecting) {
+        loadComments();
+        observer.unobserve(box);
+      }
+    });
+    intersectionObserver.observe(box);
+  }
+});
+// #mikemybytes custom
