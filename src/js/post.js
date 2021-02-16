@@ -176,7 +176,7 @@ $(document).ready(() => {
   shave('.js-article-card-title', 100)
   shave('.js-article-card-title-no-image', 250)
 
-  $scrollButton.on('click', () => {
+  $scrollButton.on('click', () => { // #mikemybytes custom
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -190,12 +190,12 @@ $(document).ready(() => {
   window.addEventListener('resize', onResizing, { passive: true })
 })
 
-$(window).on('load', () => {
+$(window).on('load', () => { // #mikemybytes custom
   prepareProgressCircle()
 })
 
 // #mikemybytes custom
-$(window).on('load', () => {
+$(window).on('load', () => { // #mikemybytes custom
   // load Disqus comments lazily
   // https://jross.me/lazy-loading-disqus-comments-with-intersectionobserver/
 

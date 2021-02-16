@@ -169,19 +169,19 @@ $(document).ready(() => {
     }
   }
 
-  $openMenu.on('click', () => {
+  $openMenu.on('click', () => { // #mikemybytes custom
     $header.addClass('mobile-menu-opened')
     $menu.addClass('opened')
     toggleScrollVertical()
   })
 
-  $closeMenu.on('click', () => {
+  $closeMenu.on('click', () => { // #mikemybytes custom
     $header.removeClass('mobile-menu-opened')
     $menu.removeClass('opened')
     toggleScrollVertical()
   })
 
-  $toggleSubmenu.on('click', () => {
+  $toggleSubmenu.on('click', () => { // #mikemybytes custom
     submenuIsOpen = !submenuIsOpen
 
     if (submenuIsOpen) {
@@ -191,7 +191,7 @@ $(document).ready(() => {
     }
   })
 
-  $openSearch.on('click', () => {
+  $openSearch.on('click', () => { // #mikemybytes custom
     $search.addClass('opened')
     setTimeout(() => {
       $inputSearch.trigger('focus')
@@ -199,13 +199,13 @@ $(document).ready(() => {
     toggleScrollVertical()
   })
 
-  $closeSearch.on('click', () => {
+  $closeSearch.on('click', () => { // #mikemybytes custom
     $inputSearch.trigger('blur')
     $search.removeClass('opened')
     toggleScrollVertical()
   })
 
-  $inputSearch.on('keyup',() => {
+  $inputSearch.on('keyup',() => { // #mikemybytes custom
     if ($inputSearch.val().length > 0 && fuse) {
       const results = fuse.search($inputSearch.val())
       const bestResults = results.filter((result) => {
@@ -242,7 +242,7 @@ $(document).ready(() => {
     }
   })
 
-  $toggleDarkMode.on('change', () => {
+  $toggleDarkMode.on('change', () => { // #mikemybytes custom
     if ($toggleDarkMode.is(':checked')) {
       $('html').attr('data-theme', 'dark')
       localStorage.setItem('theme', 'dark')
@@ -252,17 +252,17 @@ $(document).ready(() => {
     }
   })
 
-  $toggleDarkMode.on('mouseenter mouseleave', () => {
+  $toggleDarkMode.on('mouseenter mouseleave', () => { // #mikemybytes custom
     toggleDesktopTopbarOverflow(true)
   }, () => {
     toggleDesktopTopbarOverflow(false)
   })
 
-  $closeNotification.on('click', function () {
+  $closeNotification.on('click', function () { // #mikemybytes custom
     closeNotification($(this).parent())
   })
 
-  $(window).on('click', (e) => {
+  $(window).on('click', (e) => { // #mikemybytes custom
     if (submenuIsOpen) {
       if ($submenuOption && !$submenuOption.contains(e.target)) {
         submenuIsOpen = false
@@ -271,7 +271,7 @@ $(document).ready(() => {
     }
   })
 
-  $(document).on('keyup',(e) => {
+  $(document).on('keyup',(e) => { // #mikemybytes custom
     if (e.key === 'Escape' && $search.hasClass('opened')) {
       $closeSearch.trigger('click')
     }
