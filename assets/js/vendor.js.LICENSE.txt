@@ -69,9 +69,3 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-/**!
-* tippy.js v4.3.5
-* (c) 2017-2019 atomiks
-* MIT License
-*/
