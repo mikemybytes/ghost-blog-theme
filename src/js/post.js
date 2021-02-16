@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from 'cash-dom' // #mikemybytes custom
 import mediumZoom from 'medium-zoom'
 import fitvids from 'fitvids'
 import shave from 'shave'
@@ -176,10 +176,11 @@ $(document).ready(() => {
   shave('.js-article-card-title', 100)
   shave('.js-article-card-title-no-image', 250)
 
-  $scrollButton.click(() => {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 500)
+  $scrollButton.on('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   })
 
   managePostImages($)

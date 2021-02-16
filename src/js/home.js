@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from 'cash-dom' // #mikemybytes custom
 import shave from 'shave'
 import Glide, {
   Controls,

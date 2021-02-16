@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from 'cash-dom' // #mikemybytes custom
 import Headroom from "headroom.js"
 import Glide, {
   Swipe,
@@ -169,19 +169,19 @@ $(document).ready(() => {
     }
   }
 
-  $openMenu.click(() => {
+  $openMenu.on('click', () => {
     $header.addClass('mobile-menu-opened')
     $menu.addClass('opened')
     toggleScrollVertical()
   })
 
-  $closeMenu.click(() => {
+  $closeMenu.on('click', () => {
     $header.removeClass('mobile-menu-opened')
     $menu.removeClass('opened')
     toggleScrollVertical()
   })
 
-  $toggleSubmenu.click(() => {
+  $toggleSubmenu.on('click', () => {
     submenuIsOpen = !submenuIsOpen
 
     if (submenuIsOpen) {
@@ -191,21 +191,21 @@ $(document).ready(() => {
     }
   })
 
-  $openSearch.click(() => {
+  $openSearch.on('click', () => {
     $search.addClass('opened')
     setTimeout(() => {
-      $inputSearch.focus()
+      $inputSearch.trigger('focus')
     }, 400);
     toggleScrollVertical()
   })
 
-  $closeSearch.click(() => {
-    $inputSearch.blur()
+  $closeSearch.on('click', () => {
+    $inputSearch.trigger('blur')
     $search.removeClass('opened')
     toggleScrollVertical()
   })
 
-  $inputSearch.keyup(() => {
+  $inputSearch.on('keyup',() => {
     if ($inputSearch.val().length > 0 && fuse) {
       const results = fuse.search($inputSearch.val())
       const bestResults = results.filter((result) => {
@@ -242,7 +242,7 @@ $(document).ready(() => {
     }
   })
 
-  $toggleDarkMode.change(() => {
+  $toggleDarkMode.on('change', () => {
     if ($toggleDarkMode.is(':checked')) {
       $('html').attr('data-theme', 'dark')
       localStorage.setItem('theme', 'dark')
@@ -252,17 +252,17 @@ $(document).ready(() => {
     }
   })
 
-  $toggleDarkMode.hover(() => {
+  $toggleDarkMode.on('mouseenter mouseleave', () => {
     toggleDesktopTopbarOverflow(true)
   }, () => {
     toggleDesktopTopbarOverflow(false)
   })
 
-  $closeNotification.click(function () {
+  $closeNotification.on('click', function () {
     closeNotification($(this).parent())
   })
 
-  $(window).click((e) => {
+  $(window).on('click', (e) => {
     if (submenuIsOpen) {
       if ($submenuOption && !$submenuOption.contains(e.target)) {
         submenuIsOpen = false
@@ -271,9 +271,9 @@ $(document).ready(() => {
     }
   })
 
-  $(document).keyup((e) => {
+  $(document).on('keyup',(e) => {
     if (e.key === 'Escape' && $search.hasClass('opened')) {
-      $closeSearch.click()
+      $closeSearch.trigger('click')
     }
   })
 

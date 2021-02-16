@@ -50,10 +50,10 @@
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
     "aos": "eddiesigner/aos.git#v2",
+    "cash-dom": "^8.1.0",
     "fitvids": "^2.0.0",
     "fuse.js": "^6.3.0",
     "headroom.js": "^0.10.3",
-    "jquery": "^3.5.1",
     "medium-zoom": "^1.0.3",
     "shave": "^2.5.6",
     "tippy.js": "^4.0.1"
