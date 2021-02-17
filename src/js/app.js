@@ -7,7 +7,7 @@ import Glide, {
 import tippy from 'tippy.js'
 import shave from 'shave'
 import AOS from 'aos'
-import Fuse from 'fuse.js/dist/fuse.basic.esm.min.js'
+// import Fuse from 'fuse.js/dist/fuse.basic.esm.min.js' // #mikemybytes custom
 import {
   isRTL,
   formatDate,
@@ -35,15 +35,15 @@ $(document).ready(() => {
   const $closeSearch = $('.js-close-search')
   const $search = $('.js-search')
   const $inputSearch = $('.js-input-search')
-  const $searchResults = $('.js-search-results')
-  const $searchNoResults = $('.js-no-results')
+  // const $searchResults = $('.js-search-results') // #mikemybytes custom
+  // const $searchNoResults = $('.js-no-results') // #mikemybytes custom
   const $toggleDarkMode = $('.js-toggle-darkmode')
   const $closeNotification = $('.js-notification-close')
   const $mainNav = $('.js-main-nav')
   const $mainNavLeft = $('.js-main-nav-left')
   const currentSavedTheme = localStorage.getItem('theme')
 
-  let fuse = null
+  // let fuse = null // #mikemybytes custom
   let submenuIsOpen = false
   let secondaryMenuTippy = null
 
@@ -205,6 +205,9 @@ $(document).ready(() => {
     toggleScrollVertical()
   })
 
+  /*
+  // #mikemybytes custom
+  // disable searching to exclude fuse library
   $inputSearch.on('keyup',() => { // #mikemybytes custom
     if ($inputSearch.val().length > 0 && fuse) {
       const results = fuse.search($inputSearch.val())
@@ -241,6 +244,7 @@ $(document).ready(() => {
       $searchNoResults.hide()
     }
   })
+  */
 
   $toggleDarkMode.on('change', () => { // #mikemybytes custom
     if ($toggleDarkMode.is(':checked')) {
